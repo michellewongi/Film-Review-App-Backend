@@ -15,10 +15,13 @@ const firebaseConfig = {
   messagingSenderId: "1084742151259",
   appId: "1:1084742151259:web:e46afb640a85c76561e37e",
 };
+
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
 const indexRoute = require("./routes/index");
+const createReviewRoute = require("./routes/createReview");
+const singleReviewRoute = require("./routes/review");
 
 app.use(function (req, res, next) {
   // website you wish to allow to connect
@@ -35,14 +38,14 @@ app.use(function (req, res, next) {
     "Access-Control-Allow-Headers",
     "X-Requested-With,content-type"
   );
+  next();
 });
-
-// TODO: add all routes
-// TODO: add route all by single user
-// TODO: add pos
 
 // Tell Express to use routes...
 app.use("/", indexRoute);
+// submit new post
+app.use("/create", createReviewRoute);
+app.use("/review", singleReviewRoute);
 
 app.listen(port, () => {
   console.log(`Example app running at http://localhost:${port}`);

@@ -8,16 +8,18 @@ const db = firestore.getFirestore();
 
 // get all articles from firebase
 router.get("/", (req, res) => {
-  const film = firestore.getDocs(firestore.collection(db, "film"));
-  const filmArray = [];
+  const reviews = firestore.getDocs(firestore.collection(db, "reviews"));
+  const reviewsArray = [];
 
-  film
+  reviews
     .then((response) => {
       response.forEach((doc) => {
+        const docData = doc.data();
+        docData.id = doc.id;
         // push document into array everytime the query loops over
-        filmArray.push(doc.data());
+        reviewsArray.push(docData);
       });
-      return res.send(filmArray);
+      return res.send(reviewsArray);
     })
     .catch(function (error) {
       console.log("Error:", error);
