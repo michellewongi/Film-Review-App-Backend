@@ -9,14 +9,13 @@ const db = firestore.getFirestore();
 router.get("/", (req, res) => {
   // query params from URL
   const queryParams = req.query;
-  const { imageAlt, imageSrc, postMessage, userId } = queryParams;
+  const { imageSrc, postMessage, userId, userEmail } = queryParams;
 
   const setReviewPost = firestore.addDoc(firestore.collection(db, "reviews"), {
-    imageAlt,
     imageSrc,
     postMessage,
     userId,
-    // displayName,
+    userEmail,
   });
 
   setReviewPost

@@ -45,6 +45,7 @@ app.use(function (req, res, next) {
 app.use("/", indexRoute);
 // submit new post
 app.use("/create", createReviewRoute);
+// get single post
 app.use("/review", singleReviewRoute);
 
 app.listen(port, () => {
