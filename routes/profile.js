@@ -4,7 +4,7 @@ const firestore = require("firebase/firestore");
 const db = firestore.getFirestore();
 
 router.get("/:uid", (req, res) => {
-  const userId = req.params.uid;
+  const userId = req.params.userId;
   const userpost = firestore.getDoc(firestore.doc(db, "reviews", userId));
 
   userpost
