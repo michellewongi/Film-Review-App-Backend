@@ -20,7 +20,7 @@ router.get("/:uid", (req, res) => {
         const docData = { id: docSnap.id, ...docSnap.data() };
         return docData;
       });
-      res.json({ posts: postsArray, count: postsArray.length });
+      return res.json({ posts: postsArray });
     })
     .catch((err) => {
       // don't send the full error object to the client,
