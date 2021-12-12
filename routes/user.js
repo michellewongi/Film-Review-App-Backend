@@ -23,11 +23,8 @@ router.get("/:uid", (req, res) => {
       return res.json({ posts: postsArray });
     })
     .catch((err) => {
-      // don't send the full error object to the client,
-      // instead you should log the error and send the
-      // client as little information as possible
       console.error(`Failed to get user posts for firebase:${uid}`, err);
-      res.status(500).json({ error: err.code || err.message }); // Don't forget to use an appropriate status code!
+      res.status(500).json({ error: err.code || err.message });
     });
 });
 
